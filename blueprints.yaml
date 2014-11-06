@@ -1,6 +1,6 @@
 name: Anchors
 version: 1.0.0
-description: "This plugin provides automatic header anchors via the [anchorjs](hhttps://github.com/bryanbraun/anchorjs) jQuery plugin."
+description: "This plugin provides automatic header anchors via the [anchorjs](https://github.com/bryanbraun/anchorjs) jQuery plugin."
 icon: anchor
 author:
   name: Team Grav

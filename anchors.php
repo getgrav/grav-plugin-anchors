@@ -32,7 +32,7 @@ class AnchorsPlugin extends Plugin
     }
 
     /**
-     * if enabled on this page, load the JS + CSS theme.
+     * if enabled on this page, load the JS + CSS and set the selectors.
      */
     public function onTwigSiteVariables()
     {
