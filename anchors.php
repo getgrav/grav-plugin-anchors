@@ -10,11 +10,25 @@ class AnchorsPlugin extends Plugin
     /**
      * @return array
      */
-    public static function getSubscribedEvents() {
+    public static function getSubscribedEvents()
+    {
         return [
+            'onPluginsInitialized' => ['onPluginsInitialized', 0]
+        ];
+    }
+
+    /**
+     * Initialize configuration
+     */
+    public function onPluginsInitialized()
+    {
+        if ($this->isAdmin()) {
+            $this->active = false;
+        }
+        $this->enable([
             'onPageInitialized' => ['onPageInitialized', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
-        ];
+        ]);
     }
 
     /**
@@ -36,7 +50,7 @@ class AnchorsPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        if ($this->config->get('plugins.anchors.enabled')) {
+        if ($this->config->get('plugins.anchors.active')) {
             $selectors = $this->config->get('plugins.anchors.selectors') ?: 'h1,h2,h3';
             $this->grav['assets']->addCss('plugin://anchors/css/anchor.css');
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
