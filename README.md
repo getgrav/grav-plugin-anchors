@@ -30,6 +30,7 @@ eg:
     ---
     title: Sample Code With Custom Theme
     anchors:
+        active: true
         selectors: .blog h1, .blog h2
     ---
 
@@ -51,7 +52,7 @@ You can also disable anchors for a particular page if causes issues:
     ---
     title: Sample Code with Highlight disabled
     anchors:
-        enabled: false
+        active: false
     ---
 
     # Header
