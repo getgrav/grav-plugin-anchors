@@ -1,5 +1,5 @@
 # v1.2.0
-## 02/19/2015
+## 03/01/2015
 
 2. [](#improved)
     * Updated `anchors.js` to version 0.3.0
