@@ -51,10 +51,27 @@ class AnchorsPlugin extends Plugin
     public function onTwigSiteVariables()
     {
         if ($this->config->get('plugins.anchors.active')) {
-            $selectors = $this->config->get('plugins.anchors.selectors') ?: 'h1,h2,h3';
-            $this->grav['assets']->addCss('plugin://anchors/css/anchor.css');
+            $selectors = $this->config->get('plugins.anchors.selectors', 'h1,h2,h3,h4');
+
+            $visible = "visible: '{$this->config->get('plugins.anchors.visible', 'hover')}',";
+            $placement = "placement: '{$this->config->get('plugins.anchors.placement', 'right')}',";
+            $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
+            $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
+
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
-            $this->grav['assets']->addInlineJs('$(document).ready(function() { addAnchors(\''.$selectors.'\'); });');
+
+            $anchors_init = "$(document).ready(function() {
+                                anchors.options = {
+                                    $visible
+                                    $placement
+                                    $icon
+                                    $class
+                                };
+                                anchors.add('$selectors');
+                             });";
+
+
+            $this->grav['assets']->addInlineJs($anchors_init);
         }
     }
 }
