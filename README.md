@@ -1,7 +1,7 @@
 # Grav Anchors Plugin
 
 
-`anchors` is a [Grav](http://github.com/getgrav/grav) plugin that provides automatic header anchors via the [anchorjs](https://github.com/bryanbraun/anchorjs) jQuery plugin.
+`anchors` is a [Grav](http://github.com/getgrav/grav) plugin that provides automatic header anchors via the [anchorjs](http://bryanbraun.github.io/anchorjs) jQuery plugin.
 
 # Installation
 
@@ -22,6 +22,18 @@ You should now have all the plugin files under
 # Usage
 
 To best understand how Anchors works, you should read through the original [project documentation](https://github.com/bryanbraun/anchorjs).
+
+## Configuration:
+
+Simply copy the `user/plugins/breadcrumbs/anchors.yaml` into `user/config/plugins/anchors.yaml` and make your modifications.
+
+    enabled: true                 # enable or disable the plugin
+    active: true                  # active by default, if false then you must activate per-page
+    selectors: 'h1,h2,h3,h4'      # css elements to activate on.  Uses jQuery style selectors
+    placement: right              # either "left" or "right"
+    visible: hover                # Active on "hover" or "always" visible
+    icon:                         # default link or a specific character like: #, ¶, ❡, and §.
+    class:                        # adds the provided class to the anchor html
 
 You can override any default settings from the page headers:
 
