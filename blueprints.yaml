@@ -26,11 +26,52 @@ form:
       validate:
         type: bool
 
+    active:
+      type: toggle
+      label: Active
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+      help: Activate for all pages. If disabled then you must activate per-page
+
     selectors:
       type: text
       label: Selectors
       size: large
+      default: 'h1,h2,h3,h4'
       placeholder: "Anchor Selectors"
       help: Comma separated list of header selectors to activate on
 
+    placement:
+      type: text
+      label: Placement
+      size: medium
+      default: 'right'
+      placeholder: "Either `left` or `right`"
+      help: "Either `left` or `right`"
 
+    visible:
+      type: text
+      label: Visible
+      size: medium
+      default: 'hover'
+      placeholder: "Either `hover` or `always`"
+      help: "Either `hover` or `always`"
+
+    icon:
+      type: text
+      label: Icon
+      size: medium
+      default: ''
+      help: "Replace the default link icon with the character(s) provided, e.g. #, ¶, ❡ or §"
+
+    class:
+      type: text
+      label: Class
+      size: medium
+      default: ''
+      help: "Adds the provided class to the anchor html"
