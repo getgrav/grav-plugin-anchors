@@ -47,20 +47,24 @@ form:
       help: Comma separated list of header selectors to activate on
 
     placement:
-      type: text
+      type: select
       label: Placement
-      size: medium
-      default: 'right'
-      placeholder: "Either `left` or `right`"
+      classes: fancy
       help: "Either `left` or `right`"
+      default: 'right'
+      options:
+        'left': 'left'
+        'right': 'right'
 
     visible:
-      type: text
+      type: select
       label: Visible
-      size: medium
+      classes: fancy
+      help: "Hover activates on `hover` else will always display"
       default: 'hover'
-      placeholder: "Either `hover` or `always`"
-      help: "Either `hover` or `always`"
+      options:
+        'hover': 'hover'
+        'always': 'always'
 
     icon:
       type: text
