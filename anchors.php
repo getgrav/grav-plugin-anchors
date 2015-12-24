@@ -24,11 +24,12 @@ class AnchorsPlugin extends Plugin
     {
         if ($this->isAdmin()) {
             $this->active = false;
+        } else {
+            $this->enable([
+                'onPageInitialized' => ['onPageInitialized', 0],
+                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
+            ]);
         }
-        $this->enable([
-            'onPageInitialized' => ['onPageInitialized', 0],
-            'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
-        ]);
     }
 
     /**
