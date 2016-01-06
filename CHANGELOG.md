@@ -1,3 +1,9 @@
+# v1.5.0
+## 01/06/2016
+
+1. [](#improved)
+    * Disable anchors in Admin
+
 # v1.4.0
 ## 08/25/2015
 
