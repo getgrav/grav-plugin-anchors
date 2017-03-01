@@ -79,3 +79,13 @@ form:
       size: medium
       default: ''
       help: "Adds the provided class to the anchor html"
+
+    truncate:
+      type: text
+      size: x-small
+      label: Truncate
+      help: "Truncates the generated ID to the specified character length"
+      default: 64
+      validate:
+        type: number
+        min: 0
