@@ -11,7 +11,7 @@ The simplest way to install this plugin is via the [Grav Package Manager (GPM)](
 
     bin/gpm install anchors
 
-## Manual Installation 
+## Manual Installation
 
 If for some reason you can't use GPM you can manually install this plugin. Download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `anchors`.
 
@@ -34,6 +34,7 @@ Simply copy the `user/plugins/breadcrumbs/anchors.yaml` into `user/config/plugin
     visible: hover                # Active on "hover" or "always" visible
     icon:                         # default link or a specific character like: #, ¶, ❡, and §.
     class:                        # adds the provided class to the anchor html
+    truncate: 64                  # truncates the generated ID to the specified character length
 
 You can override any default settings from the page headers:
 
@@ -48,14 +49,14 @@ eg:
 
     # Header
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan porta diam, 
-    nec sagittis odio euismod nec. Etiam eu rutrum eros. 
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan porta diam,
+    nec sagittis odio euismod nec. Etiam eu rutrum eros.
 
     ## Sub Header
 
-    Proin commodo lobortis elementum. 
-    Integer vel ultrices massa, nec ornare urna. Phasellus tincidunt rutrum dolor, vestibulum 
-    faucibus ligula laoreet id. Donec hendrerit arcu vitae lacus mattis facilisis. Praesent 
+    Proin commodo lobortis elementum.
+    Integer vel ultrices massa, nec ornare urna. Phasellus tincidunt rutrum dolor, vestibulum
+    faucibus ligula laoreet id. Donec hendrerit arcu vitae lacus mattis facilisis. Praesent
     tortor nibh, pulvinar nec orci ac, rhoncus pharetra nunc.
 
 
@@ -69,14 +70,14 @@ You can also disable anchors for a particular page if causes issues:
 
     # Header
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan porta diam, 
-    nec sagittis odio euismod nec. Etiam eu rutrum eros. 
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan porta diam,
+    nec sagittis odio euismod nec. Etiam eu rutrum eros.
 
     ## Sub Header
 
-    Proin commodo lobortis elementum. 
-    Integer vel ultrices massa, nec ornare urna. Phasellus tincidunt rutrum dolor, vestibulum 
-    faucibus ligula laoreet id. Donec hendrerit arcu vitae lacus mattis facilisis. Praesent 
+    Proin commodo lobortis elementum.
+    Integer vel ultrices massa, nec ornare urna. Phasellus tincidunt rutrum dolor, vestibulum
+    faucibus ligula laoreet id. Donec hendrerit arcu vitae lacus mattis facilisis. Praesent
     tortor nibh, pulvinar nec orci ac, rhoncus pharetra nunc.
 
 

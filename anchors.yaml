@@ -5,3 +5,4 @@ placement: right              # either "left" or "right"
 visible: hover                # Active on "hover" or "always" visible
 icon:                         # default link or a specific character like: #, ¶, ❡, and §.
 class:                        # adds the provided class to the anchor html
+truncate: 64                  # truncates the generated ID to the specified character length

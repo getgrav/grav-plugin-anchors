@@ -58,6 +58,7 @@ class AnchorsPlugin extends Plugin
             $placement = "placement: '{$this->config->get('plugins.anchors.placement', 'right')}',";
             $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
             $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
+            $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)}";
 
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
@@ -67,6 +68,7 @@ class AnchorsPlugin extends Plugin
                                     $placement
                                     $icon
                                     $class
+                                    $truncate
                                 };
                                 anchors.add('$selectors');
                              });";
