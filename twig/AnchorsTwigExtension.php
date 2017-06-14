@@ -96,14 +96,14 @@ class AnchorsTwigExtension extends \Twig_Extension
      */
     private function getUrl($text)
     {
-        $rx1 = array('ä','ã','à','á','â','ê','ë','è','é','ï','ì','í','ö','õ','ò','ó','ô','ü','ù','ú','û','À','Á','É','Í','Ó','Ú','ñ','Ñ','ç','Ç');
+        $rx1 = array('ä','ã','à','á','â','ê','ë','è','é','ï','ì','í','ö','õ','ò','ó','ô','ü','ù','ú','û','À','Á','Â','Ã','É','Ê','Ô','Í','Ó','Õ','Ú','ñ','Ñ','ç','Ç');
         $rx2 = '/\'/';
         $rx3 = '/[& \+\$,:;=\?@"#\{\}\|\^~\[`%!\'<>\]\.\/\(\)\*ºª]/';
         $rx4 = '/-{2,}/';
         $rx5 = '/\^-+|-+$/';
 
 
-        $urlAnchor1 = str_replace($rx1, '', $text);
+        $urlAnchor1 = str_replace('–', '-', str_replace($rx1, '', $text));
         $urlAnchor2 = preg_replace($rx2, '', $urlAnchor1);
         $urlAnchor3 = preg_replace($rx3, '-', $urlAnchor2);
         $urlAnchor4 = $this->textLimit(preg_replace($rx4, '-', $urlAnchor3), 64);
