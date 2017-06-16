@@ -75,18 +75,34 @@ class AnchorsPlugin extends Plugin
                                 // juste add the css class 'hideFromAnchorJS' to the elements to hide
 
                                 // store and empty every content that need to be hidden in anchorJS
+                                /*
                                 var content=[];
                                 $('.hideFromAnchorJS').each( function(){
                                     content.unshift($(this).html());
                                     $(this).empty(); 
                                 } );
+                                */
+                                /*
+                                anchors.add('.e-content > h1');
+                                anchors.add('.e-content > h2');
+                                anchors.add('.e-content > h3');
+                                anchors.add('.e-content > h4');
+
+                                anchors.add('.list-blog-header > h1');
+                                anchors.add('.list-blog-header > h2');
+                                anchors.add('.list-blog-header > h3');
+                                anchors.add('.list-blog-header > h4');
+                                */
+                               
                                 // we generate the anchor list
                                 anchors.add('$selectors');
+
+                                /*
                                 // restore the deleted content
                                 $('.hideFromAnchorJS').each( function(){
                                     $(this).html(content.shift()); 
                                 } );
-
+                                */
                              });";
 
 
