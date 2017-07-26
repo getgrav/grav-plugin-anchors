@@ -70,7 +70,7 @@ class AnchorsPlugin extends Plugin
                                     $class
                                     $truncate
                                 };
-                                // steamlead hack: allow content to be hidden from the anchor 
+                                // LO Hack: allow content to be hidden from the anchor 
                                 // usefull for instance when anchor is used with the prettyprint plugin activated
                                 // juste add the css class 'hideFromAnchorJS' to the elements to hide
 
