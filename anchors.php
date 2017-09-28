@@ -27,9 +27,17 @@ class AnchorsPlugin extends Plugin
         } else {
             $this->enable([
                 'onPageInitialized' => ['onPageInitialized', 0],
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
+                'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
+                'onTwigExtensions' => ['onTwigExtensions', 0]
             ]);
         }
+    }
+
+    public function onTwigExtensions()
+    {
+        $config = $this->config->get('plugins.anchors.selectors');
+        require_once(__DIR__ . '/twig/AnchorsTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new AnchorsTwigExtension($config));
     }
 
     /**
@@ -58,6 +66,7 @@ class AnchorsPlugin extends Plugin
             $placement = "placement: '{$this->config->get('plugins.anchors.placement', 'right')}',";
             $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
             $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
+            $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)}";
 
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
@@ -67,6 +76,7 @@ class AnchorsPlugin extends Plugin
                                     $placement
                                     $icon
                                     $class
+                                    $truncate
                                 };
                                 anchors.add('$selectors');
                              });";
