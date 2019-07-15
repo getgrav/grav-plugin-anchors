@@ -50,12 +50,16 @@ When rendered the function will return a formed HTML with `<ul>` and the links o
 Simply copy the `user/plugins/breadcrumbs/anchors.yaml` into `user/config/plugins/anchors.yaml` and make your modifications.
 
     enabled: true                 # enable or disable the plugin
-    active: true                  # active by default, if false then you must activate per-page
+    active: false                 # active by default, if false then you must activate per-page
+    sticky: true                  # Activate Sticky effect (http://stickyjs.com/)
+    smooth_scrolling: true        # Activate Smooth Scrolling
+    offset_top: 50                # Setting the stopping distance from the anchor to the top of the page
     selectors: 'h1,h2,h3,h4'      # css elements to activate on.  Uses jQuery style selectors
     placement: right              # either "left" or "right"
     visible: hover                # Active on "hover" or "always" visible
     icon:                         # default link or a specific character like: #, ¶, ❡, and §.
     class:                        # adds the provided class to the anchor html
+    class_ul: 'menu'              # Adds the provided class to the ul items
     truncate: 64                  # truncates the generated ID to the specified character length
 
 You can override any default settings from the page headers:
