@@ -118,7 +118,7 @@ form:
       type: text
       label: Class Items
       size: medium
-      default: menu
+      default: ''
       help: "Adds the provided class to the ul items"
 
     truncate:

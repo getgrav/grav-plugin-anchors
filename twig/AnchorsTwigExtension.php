@@ -81,7 +81,7 @@ class AnchorsTwigExtension extends \Twig_Extension
 
         $html .= "<ul id='sticker' class='$classItems'>";
         foreach($itens as $item){
-            $html .= '<li class="menu-item"><a href="#'.$this->getUrl($item).'">'.$this->textLimit($item, 50, false).'</a></li>';
+            $html .= '<li><a href="#'.$this->getUrl($item).'">'.$this->textLimit($item, 50, false).'</a></li>';
         }
         $html .= "</ul>";
 

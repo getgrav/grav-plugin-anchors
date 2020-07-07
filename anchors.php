@@ -77,6 +77,12 @@ class AnchorsPlugin extends Plugin
                 $this->grav['assets']->addJs('plugin://anchors/js/jquery.sticky.js');
 
             $anchors_init = "$(document).ready(function() {
+                                $('#sticker').on('sticky-start', function() { 
+                                    $(this).addClass('custom-sticker-content');
+                                });
+                                $('#sticker').on('sticky-end', function() { 
+                                    $(this).removeClass('custom-sticker-content');
+                                });
                                 anchors.options = {
                                     $visible
                                     $placement
