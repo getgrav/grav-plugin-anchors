@@ -35,7 +35,7 @@ class AnchorsPlugin extends Plugin
 
     public function onTwigExtensions()
     {
-        $config = $this->config->get('plugins.anchors.selectors');
+        $config = $this->config->get('plugins.anchors');
         require_once(__DIR__ . '/twig/AnchorsTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new AnchorsTwigExtension($config));
     }
