@@ -1,3 +1,9 @@
+# v1.5.4
+## mm/dd/2019
+
+1. [](#improved)
+    * Updated `anchors.js` to version 4.2.2
+
 # v1.5.3
 ## 03/30/2019
 
