@@ -34,7 +34,7 @@ class AnchorsTwigExtension extends \Twig_Extension
     public function anchorsFunction($content, $tag = 'h2', $terms)
     {
 
-        $configTags = array_map('trim', explode(',',$this->config));
+        $configTags = array_map('trim', explode(',',$this->config['selectors']));
 
         if (in_array($tag, $configTags)){
             $textMenu = [];
@@ -60,7 +60,7 @@ class AnchorsTwigExtension extends \Twig_Extension
             }
         }else{
             $tag = current($configTags);
-            $html = $this->anchorsFunction($tag, $content);
+            $html = $this->anchorsFunction($content, $tag);
         }
 
         return $html;
@@ -77,12 +77,13 @@ class AnchorsTwigExtension extends \Twig_Extension
     private function getHtmlTag($itens)
     {
         $html = '';
+        $classItems = $this->config['class_ul'];
 
-        $html .= '<ul class="items-menus-page">';
+        $html .= "<ul id='sticker' class='$classItems'>";
         foreach($itens as $item){
             $html .= '<li><a href="#'.$this->getUrl($item).'">'.$this->textLimit($item, 50, false).'</a></li>';
         }
-        $html .= '</ul>';
+        $html .= "</ul>";
 
         return $html;
     }
@@ -96,12 +97,12 @@ class AnchorsTwigExtension extends \Twig_Extension
      */
     private function getUrl($text)
     {
-        $rx1 = array('ä','ã','à','á','â','ê','ë','è','é','ï','ì','í','ö','õ','ò','ó','ô','ü','ù','ú','û','À','Á','Â','Ã','É','Ê','Ô','Í','Ó','Õ','Ú','ñ','Ñ','ç','Ç');
+        //$rx1 = array('ä','ã','à','á','â','ê','ë','è','é','ï','ì','í','ö','õ','ò','ó','ô','ü','ù','ú','û','À','Á','Â','Ã','É','Ê','Ô','Í','Ó','Õ','Ú','ñ','Ñ','ç','Ç','/','\\','.');
+        $rx1 = array('/','\\','.');
         $rx2 = '/\'/';
         $rx3 = '/[& \+\$,:;=\?@"#\{\}\|\^~\[`%!\'<>\]\.\/\(\)\*ºª]/';
         $rx4 = '/-{2,}/';
         $rx5 = '/\^-+|-+$/';
-
 
         $urlAnchor1 = str_replace('–', '-', str_replace($rx1, '', $text));
         $urlAnchor2 = preg_replace($rx2, '', $urlAnchor1);
@@ -109,7 +110,7 @@ class AnchorsTwigExtension extends \Twig_Extension
         $urlAnchor4 = $this->textLimit(preg_replace($rx4, '-', $urlAnchor3), 64);
         $urlAnchor5 = preg_replace($rx5, '', $urlAnchor4);
 
-        $urlAnchorFinal = strtolower($urlAnchor5);
+        $urlAnchorFinal = mb_strtolower($urlAnchor5);
 
         return $urlAnchorFinal;
     }

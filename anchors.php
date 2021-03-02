@@ -35,7 +35,7 @@ class AnchorsPlugin extends Plugin
 
     public function onTwigExtensions()
     {
-        $config = $this->config->get('plugins.anchors.selectors');
+        $config = (array) $this->config->get('plugins.anchors');
         require_once(__DIR__ . '/twig/AnchorsTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new AnchorsTwigExtension($config));
     }
@@ -59,6 +59,10 @@ class AnchorsPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
+        $stickyValue = $this->config->get('plugins.anchors.sticky');
+        $smoothScrollingValue = $this->config->get('plugins.anchors.smooth_scrolling');
+        $offsetTop = $this->config->get('plugins.anchors.offset_top') ?: 0;
+
         if ($this->config->get('plugins.anchors.active')) {
             $selectors = $this->config->get('plugins.anchors.selectors', 'h1,h2,h3,h4');
 
@@ -69,8 +73,16 @@ class AnchorsPlugin extends Plugin
             $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)}";
 
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
+            if ($stickyValue)
+                $this->grav['assets']->addJs('plugin://anchors/js/jquery.sticky.js');
 
             $anchors_init = "$(document).ready(function() {
+                                $('#sticker').on('sticky-start', function() { 
+                                    $(this).addClass('custom-sticker-content');
+                                });
+                                $('#sticker').on('sticky-end', function() { 
+                                    $(this).removeClass('custom-sticker-content');
+                                });
                                 anchors.options = {
                                     $visible
                                     $placement
@@ -79,6 +91,18 @@ class AnchorsPlugin extends Plugin
                                     $truncate
                                 };
                                 anchors.add('$selectors');
+                                if ('$smoothScrollingValue')
+                                 $(document).on('click', 'a[href^=\"#\"]', function (e) {
+                                    var id = $(this).attr('href');
+                                    var target = $(id);
+                                    if (target.length === 0) {
+                                      return;
+                                    }
+                                    e.preventDefault();
+                                    $('body, html').animate({ scrollTop: target.offset().top - $offsetTop });
+                                });
+                                if ('$stickyValue')
+                                    $('#sticker').sticky({topSpacing:0});
                              });";
 
 
