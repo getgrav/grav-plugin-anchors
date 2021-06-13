@@ -70,7 +70,7 @@ class AnchorsPlugin extends Plugin
 
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
-            $anchors_init = "$(document).ready(function() {
+            $anchors_init = "document.addEventListener('DOMContentLoaded', function(event) {
                                 anchors.options = {
                                     $visible
                                     $placement
