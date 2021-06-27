@@ -2,14 +2,16 @@
 
 namespace Grav\Plugin;
 
+use Grav\Common\Config\Config;
+
 class AnchorsTwigExtension extends \Twig_Extension
 {
-
+    /** @var Config $config */
     private $config;
 
     public function __construct($config)
     {
-        $this->config = $config;
+        $this->config = new Config($config);
     }
 
     public function getName()
@@ -34,7 +36,7 @@ class AnchorsTwigExtension extends \Twig_Extension
     public function anchorsFunction($content, $tag = 'h2', $terms)
     {
 
-        $configTags = array_map('trim', explode(',',$this->config));
+        $configTags = array_map('trim', explode(',',$this->config['selectors']));
 
         if (in_array($tag, $configTags)){
             $textMenu = [];
@@ -80,7 +82,7 @@ class AnchorsTwigExtension extends \Twig_Extension
 
         $html .= '<ul class="items-menus-page">';
         foreach($itens as $item){
-            $html .= '<li><a href="#'.$this->getUrl($item).'">'.$this->textLimit($item, 50, false).'</a></li>';
+            $html .= '<li><a href="#'.$this->getUrl($item).'">'.$this->textLimit($item, $this->config->get('truncate_menu_title', 50), false).'</a></li>';
         }
         $html .= '</ul>';
 
@@ -106,7 +108,7 @@ class AnchorsTwigExtension extends \Twig_Extension
         $urlAnchor1 = str_replace('–', '-', str_replace($rx1, '', $text));
         $urlAnchor2 = preg_replace($rx2, '', $urlAnchor1);
         $urlAnchor3 = preg_replace($rx3, '-', $urlAnchor2);
-        $urlAnchor4 = $this->textLimit(preg_replace($rx4, '-', $urlAnchor3), 64);
+        $urlAnchor4 = $this->textLimit(preg_replace($rx4, '-', $urlAnchor3), $this->config->get('truncate', 64));
         $urlAnchor5 = preg_replace($rx5, '', $urlAnchor4);
 
         $urlAnchorFinal = strtolower($urlAnchor5);
