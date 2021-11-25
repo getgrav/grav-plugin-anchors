@@ -66,12 +66,10 @@ class AnchorsPlugin extends Plugin
             $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
             $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
             $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)}";
-
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
-
             $anchors_init =
-                "document.addEventListener(\"DOMContentLoaded\", function() {
+                "document.addEventListener('DOMContentLoaded', function() {
                     anchors.options = {
                         $visible
                         $placement
@@ -93,10 +91,7 @@ class AnchorsPlugin extends Plugin
                           var danchorshref = danchors[r].href;
                           danchors[r].setAttribute("data-clipboard-text",danchorshref);
                         }
-                
-                        // run this after running AnchorJS
-                        let anchorjsLinks = document.querySelectorAll(".anchorjs-link");
-                
+                        let anchorjsLinks = document.querySelectorAll(".anchorjs-link");                
                         anchorjsLinks.forEach(el => {
                           el.addEventListener("click", event => {
                             event.preventDefault();
@@ -108,7 +103,6 @@ class AnchorsPlugin extends Plugin
 
                 $this->grav['assets']->addJs('plugin://anchors/js/clipboard.min.js');
                 $this->grav['assets']->addInlineJs($clipboard_init);
-
             }
         }
     }
