@@ -1,5 +1,5 @@
 # v1.6.0
-## mm/dd/2021
+## 11/24/2021
 
 1. [](#new)
    * Added new option `copy_to_clipboard` to automatically copy the link to clipboard

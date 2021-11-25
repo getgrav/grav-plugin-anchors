@@ -1,7 +1,7 @@
 name: Anchors
 type: plugin
 slug: anchors
-version: 1.5.4
+version: 1.6.0
 description: "This plugin provides automatic header anchors via the [anchorjs](http://bryanbraun.github.io/anchorjs) jQuery plugin."
 icon: anchor
 author:
