@@ -69,6 +69,7 @@ class AnchorsPlugin extends Plugin
 
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
+
             $anchors_init =
                 "document.addEventListener(\"DOMContentLoaded\", function() {
                     anchors.options = {
@@ -109,10 +110,6 @@ class AnchorsPlugin extends Plugin
                 $this->grav['assets']->addInlineJs($clipboard_init);
 
             }
-
-
-
-
         }
     }
 }
