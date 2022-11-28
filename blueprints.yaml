@@ -75,13 +75,13 @@ form:
       type: text
       label: ARIA label
       help: "Describe the action for blind people using accessibility tools like screen reader"
-      default: "Copy the link to this section"
+      default: "Copy the link and go to this section"
 
     title:
       type: text
       label: Title label
       help: "Describe the action in a tips to help user to understand this icon"
-      default: "Copy the link to this section"
+      default: "Copy the link and go to this section"
 
     icon:
       type: text
