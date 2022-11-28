@@ -117,4 +117,4 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-      help: Instead of scrolling to the item when clicking, you can enabled this option to copy the link to the clipboard automatically
+      help: In more of scrolling to the item when clicking, you can enabled this option to copy the link to the clipboard automatically
