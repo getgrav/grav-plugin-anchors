@@ -66,8 +66,8 @@ class AnchorsPlugin extends Plugin
             $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
             $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
             $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)},";
-            $ariaLabel = "ariaLabel: '{$this->config->get('plugins.anchors.aria', 'Copy the link to the section: %s')}',";
-            $titleText = "titleText: '{$this->config->get('plugins.anchors.title', 'Copy the link to this section')}',";
+            $ariaLabel = "ariaLabel: '{$this->config->get('plugins.anchors.aria', 'Copy the link and go to this section')}',";
+            $titleText = "titleText: '{$this->config->get('plugins.anchors.title', 'Copy the link and go to this section')}',";
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
             $anchors_init =
