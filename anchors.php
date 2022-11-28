@@ -65,7 +65,9 @@ class AnchorsPlugin extends Plugin
             $placement = "placement: '{$this->config->get('plugins.anchors.placement', 'right')}',";
             $icon = $this->config->get('plugins.anchors.icon') ? "icon: '{$this->config->get('plugins.anchors.icon')}'," : '';
             $class = $this->config->get('plugins.anchors.class') ? "class: '{$this->config->get('plugins.anchors.class')}'," : '';
-            $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)}";
+            $truncate = "truncate: {$this->config->get('plugins.anchors.truncate', 64)},";
+            $ariaLabel = "ariaLabel: '{$this->config->get('plugins.anchors.aria', 'Copy the link to the section: %s')}',";
+            $titleText = "titleText: '{$this->config->get('plugins.anchors.title', 'Copy the link to this section')}',";
             $this->grav['assets']->addJs('plugin://anchors/js/anchor.min.js');
 
             $anchors_init =
@@ -76,6 +78,8 @@ class AnchorsPlugin extends Plugin
                         $icon
                         $class
                         $truncate
+                        $ariaLabel
+                        $titleText
                     };
                     anchors.add('$selectors');
                 });";
@@ -94,7 +98,7 @@ class AnchorsPlugin extends Plugin
                         let anchorjsLinks = document.querySelectorAll(".anchorjs-link");                
                         anchorjsLinks.forEach(el => {
                           el.addEventListener("click", event => {
-                            event.preventDefault();
+                            #event.preventDefault();
                             // add custom "copy to clipboard" code
                             new ClipboardJS(".anchorjs-link");       
                           });
