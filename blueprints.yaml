@@ -54,7 +54,7 @@ form:
       type: select
       label: Placement
       classes: fancy
-      help: "Either `left` or `right`"
+      help: "Either `left` or `right`. Right is recommended for accessibility in order screen reader to read heading before to read"
       default: 'right'
       options:
         'left': 'left'
@@ -65,10 +65,23 @@ form:
       label: Visible
       classes: fancy
       help: "Hover activates on `hover` else will always display"
-      default: 'hover'
+      default: 'touch'
       options:
+        'touch': 'Always display on touch screen and only on hover on others'
         'hover': 'hover'
         'always': 'always'
+
+    aria:
+      type: text
+      label: ARIA label
+      help: "Describe the action for blind people using accessibility tools like screen reader"
+      default: "Copy the link and go to this section"
+
+    title:
+      type: text
+      label: Title label
+      help: "Describe the action in a tips to help user to understand this icon"
+      default: "Copy the link and go to this section"
 
     icon:
       type: text
@@ -97,11 +110,11 @@ form:
     copy_to_clipboard:
       type: toggle
       label: Copy to clipboard
-      highlight: 0
-      default: 0
+      highlight: 1
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-      help: Instead of scrolling to the item when clicking, you can enabled this option to copy the link to the clipboard automatically
+      help: In more of scrolling to the item when clicking, you can enabled this option to copy the link to the clipboard automatically
