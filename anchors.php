@@ -98,7 +98,6 @@ class AnchorsPlugin extends Plugin
                         let anchorjsLinks = document.querySelectorAll(".anchorjs-link");                
                         anchorjsLinks.forEach(el => {
                           el.addEventListener("click", event => {
-                            #event.preventDefault();
                             // add custom "copy to clipboard" code
                             new ClipboardJS(".anchorjs-link");       
                           });
