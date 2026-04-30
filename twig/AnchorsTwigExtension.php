@@ -34,18 +34,18 @@ class AnchorsTwigExtension extends \Twig_Extension
     public function anchorsFunction($content, $tag = 'h2', $terms = null)
     {
 
-        $configTags = array_map('trim', explode(',',$this->config));
+        $configTags = array_map('trim', explode(',',(string) $this->config));
 
         if (in_array($tag, $configTags)){
             $textMenu = [];
             $rx = '/<'.$tag.'>(.*)<\/'.$tag.'>/';
 
-            preg_match_all($rx, $content, $group);
+            preg_match_all($rx, (string) $content, $group);
 
             if (!empty($group[1])){
 
                 if (!empty($terms)){
-                    $termsArray = array_map('trim', explode(',',$terms));
+                    $termsArray = array_map('trim', explode(',',(string) $terms));
                     $elements = array_diff($group[1],$termsArray);
                 }else{
                     $elements = $group[1];
@@ -109,7 +109,7 @@ class AnchorsTwigExtension extends \Twig_Extension
         $urlAnchor4 = $this->textLimit(preg_replace($rx4, '-', $urlAnchor3), 64);
         $urlAnchor5 = preg_replace($rx5, '', $urlAnchor4);
 
-        $urlAnchorFinal = strtolower($urlAnchor5);
+        $urlAnchorFinal = strtolower((string) $urlAnchor5);
 
         return $urlAnchorFinal;
     }
@@ -125,13 +125,13 @@ class AnchorsTwigExtension extends \Twig_Extension
      */
     private function textLimit($text, $limit, $url = true)
     {
-        $count = strlen($text);
+        $count = strlen((string) $text);
         if ( $count >= $limit ) {
             if ($url){
-                $text = substr($text, 0, $limit);
+                $text = substr((string) $text, 0, $limit);
                 return $text;
             }else {
-                $text = substr($text, 0, strrpos(substr($text, 0, $limit), ' ')) . '...';
+                $text = substr((string) $text, 0, strrpos(substr((string) $text, 0, $limit), ' ')) . '...';
                 return $text;
             }
         }
