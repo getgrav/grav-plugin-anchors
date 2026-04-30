@@ -1,3 +1,9 @@
+# v1.6.1
+## 04/30/2026
+
+1. [](#bugfix)
+    * Fixed PHP 8.1+ deprecation notice — explicit string casts where `null` was being passed to string-typed function arguments.
+
 # v1.6.0
 ## 11/24/2021
 

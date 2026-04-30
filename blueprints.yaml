@@ -1,7 +1,7 @@
 name: Anchors
 type: plugin
 slug: anchors
-version: 1.6.0
+version: 1.6.1
 description: "This plugin provides automatic header anchors via the [anchorjs](http://bryanbraun.github.io/anchorjs) jQuery plugin."
 icon: anchor
 author:
@@ -13,6 +13,9 @@ demo: http://learn.getgrav.org
 keywords: anchor, header, plugin, code
 bugs: https://github.com/getgrav/grav-plugin-anchors/issues
 license: MIT
+compatibility:
+  grav: ['1.7', '2.0']
+
 dependencies:
   - { name: grav, version: '>=1.6.0' }
 
